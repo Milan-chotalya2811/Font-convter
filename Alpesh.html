@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<title>LGM–Arun → Lohit Gujarati | Advocate Tool</title>
+<style>
+body{
+  background:linear-gradient(135deg,#0b1220,#111827);
+  color:#e5e7eb;
+  font-family:"Georgia","Times New Roman",serif;
+  padding:30px;
+}
+.container{
+  max-width:900px;
+  margin:auto;
+  background:#020617;
+  border:2px solid #1f2937;
+  border-radius:10px;
+  padding:30px;
+}
+h1{text-align:center;font-size:28px;margin-bottom:6px;}
+.sub{text-align:center;font-size:14px;opacity:.75;margin-bottom:25px;}
+label{font-weight:bold;margin-top:18px;display:block;}
+textarea{
+  width:100%;height:170px;margin-top:8px;padding:14px;
+  font-size:16px;border-radius:6px;border:1px solid #374151;
+  background:#f8fafc;color:#020617;
+}
+button{
+  margin-top:20px;padding:14px 30px;font-size:16px;
+  background:#14532d;color:#ecfdf5;border:none;
+  border-radius:6px;cursor:pointer;
+}
+button:hover{background:#166534;}
+.output{
+  font-family:"Lohit Gujarati","Noto Sans Gujarati",serif;
+  background:#ecfdf5;color:#020617;
+}
+.footer{
+  margin-top:25px;font-size:13px;opacity:.7;
+  border-top:1px solid #1f2937;padding-top:15px;
+}
+.badge{
+  display:inline-block;background:#1f2937;padding:4px 10px;
+  border-radius:20px;font-size:12px;margin-left:6px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>⚖️ LGM–Arun → Lohit Gujarati</h1>
+<div class="sub">
+Legal & Office Unicode Conversion Tool
+<span class="badge">ADVOCATE EDITION</span>
+</div>
+
+<label>📄 Paste LGM–Arun Gujarati Text</label>
+<textarea id="input" placeholder="Paste LGM Arun font text here..."></textarea>
+
+<button onclick="convert()">Convert to Unicode Gujarati</button>
+
+<label>✅ Unicode Gujarati Output (Lohit)</label>
+<textarea id="output" class="output" placeholder="Gujarati Unicode text will appear here..."></textarea>
+
+<div class="footer">
+⚠️ This tool converts legacy <b>LGM–Arun</b> text into real Unicode Gujarati.
+You can copy the output and paste it directly into MS Word and apply
+<b>Lohit Gujarati</b> font.
+</div>
+</div>
+
+<script>
+const consonants = {
+  'D':'દ','[':'ગ','P':'પ','G':'જ','J':'ર',';':'ત',
+  'L':'લ','V':'વ','H':'હ','T':'ય','S':'સ','M':'મ'
+};
+const matras = {'F':'િ','Z':'ા','X':'ુ','E':'ે','O':'ો'};
+const signs = {'\\':'્',',':'ં','"':'ઃ',' ':' '};
+
+function convert(){
+  let text = document.getElementById("input").value;
+  let out = "";
+  let i = 0;
+  while(i < text.length){
+    let ch = text[i];
+    let next = text[i+1];
+    if(matras[ch] && consonants[next]){
+      out += consonants[next] + matras[ch];
+      i += 2;
+    } else if(consonants[ch]){
+      out += consonants[ch];
+      i++;
+    } else if(signs[ch]){
+      out += signs[ch];
+      i++;
+    } else {
+      out += ch;
+      i++;
+    }
+  }
+  document.getElementById("output").value = out;
+}
+</script>
+</body>
+</html>
