@@ -2,104 +2,229 @@
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
-<title>LGM–Arun → Lohit Gujarati | Advocate Tool</title>
+<title>LGM–Arun → Lohit Gujarati | Advocate 3D Tool</title>
+
 <style>
+:root{
+  --bg1:#020617;
+  --bg2:#0f172a;
+  --gold:#facc15;
+  --neon:#22d3ee;
+  --emerald:#34d399;
+}
+
+*{box-sizing:border-box}
+
 body{
-  background:linear-gradient(135deg,#0b1220,#111827);
-  color:#e5e7eb;
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#1e293b,transparent 40%),
+    radial-gradient(circle at bottom right,#020617,#000),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
   font-family:"Georgia","Times New Roman",serif;
-  padding:30px;
+  color:#e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+  perspective:1200px;
 }
+
+/* ===== Floating 3D Card ===== */
 .container{
-  max-width:900px;
-  margin:auto;
-  background:#020617;
-  border:2px solid #1f2937;
-  border-radius:10px;
-  padding:30px;
+  width:100%;
+  max-width:950px;
+  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  border-radius:20px;
+  padding:40px;
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(255,255,255,.08);
+  transform-style:preserve-3d;
+  animation:float 6s ease-in-out infinite;
 }
-h1{text-align:center;font-size:28px;margin-bottom:6px;}
-.sub{text-align:center;font-size:14px;opacity:.75;margin-bottom:25px;}
-label{font-weight:bold;margin-top:18px;display:block;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotateX(0)}
+  50%{transform:translateY(-10px) rotateX(1deg)}
+}
+
+/* ===== Header ===== */
+h1{
+  text-align:center;
+  font-size:34px;
+  letter-spacing:1px;
+  margin-bottom:8px;
+  color:var(--gold);
+  text-shadow:0 0 15px rgba(250,204,21,.4);
+}
+
+.sub{
+  text-align:center;
+  font-size:14px;
+  opacity:.85;
+  margin-bottom:30px;
+}
+
+.badge{
+  display:inline-block;
+  margin-left:8px;
+  padding:6px 14px;
+  border-radius:30px;
+  font-size:12px;
+  background:linear-gradient(135deg,var(--gold),#fde68a);
+  color:#020617;
+  font-weight:bold;
+  box-shadow:0 0 15px rgba(250,204,21,.5);
+}
+
+/* ===== Labels ===== */
+label{
+  display:block;
+  margin-top:22px;
+  margin-bottom:8px;
+  font-weight:bold;
+  color:#e5e7eb;
+}
+
+/* ===== Textareas ===== */
 textarea{
-  width:100%;height:170px;margin-top:8px;padding:14px;
-  font-size:16px;border-radius:6px;border:1px solid #374151;
-  background:#f8fafc;color:#020617;
+  width:100%;
+  height:180px;
+  padding:16px;
+  font-size:16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.15);
+  background:linear-gradient(145deg,#f8fafc,#e5e7eb);
+  color:#020617;
+  box-shadow:
+    inset 0 4px 10px rgba(0,0,0,.25),
+    0 10px 25px rgba(0,0,0,.4);
+  transition:.3s;
 }
-button{
-  margin-top:20px;padding:14px 30px;font-size:16px;
-  background:#14532d;color:#ecfdf5;border:none;
-  border-radius:6px;cursor:pointer;
+
+textarea:focus{
+  outline:none;
+  box-shadow:
+    0 0 0 2px var(--neon),
+    0 15px 30px rgba(34,211,238,.35);
 }
-button:hover{background:#166534;}
+
+/* Unicode Output Look */
 .output{
   font-family:"Lohit Gujarati","Noto Sans Gujarati",serif;
-  background:#ecfdf5;color:#020617;
+  background:linear-gradient(145deg,#ecfdf5,#d1fae5);
 }
+
+/* ===== Button ===== */
+button{
+  margin:30px auto 10px;
+  display:block;
+  padding:16px 50px;
+  font-size:18px;
+  border-radius:50px;
+  border:none;
+  cursor:pointer;
+  color:#022c22;
+  font-weight:bold;
+  background:linear-gradient(135deg,var(--emerald),var(--neon));
+  box-shadow:
+    0 20px 40px rgba(16,185,129,.5),
+    inset 0 -2px 0 rgba(0,0,0,.3);
+  transition:.25s;
+  transform-style:preserve-3d;
+}
+
+button:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:
+    0 30px 60px rgba(34,211,238,.6);
+}
+
+button:active{
+  transform:translateY(1px);
+}
+
+/* ===== Footer ===== */
 .footer{
-  margin-top:25px;font-size:13px;opacity:.7;
-  border-top:1px solid #1f2937;padding-top:15px;
-}
-.badge{
-  display:inline-block;background:#1f2937;padding:4px 10px;
-  border-radius:20px;font-size:12px;margin-left:6px;
+  margin-top:30px;
+  font-size:13px;
+  opacity:.8;
+  border-top:1px solid rgba(255,255,255,.15);
+  padding-top:18px;
+  line-height:1.6;
 }
 </style>
 </head>
+
 <body>
+
 <div class="container">
+
 <h1>⚖️ LGM–Arun → Lohit Gujarati</h1>
 <div class="sub">
-Legal & Office Unicode Conversion Tool
-<span class="badge">ADVOCATE EDITION</span>
+Legal-grade Unicode Conversion System
+<span class="badge">ADVOCATE 3D EDITION</span>
 </div>
 
 <label>📄 Paste LGM–Arun Gujarati Text</label>
-<textarea id="input" placeholder="Paste LGM Arun font text here..."></textarea>
+<textarea id="input" placeholder="Paste LGM–Arun legacy Gujarati text here..."></textarea>
 
-<button onclick="convert()">Convert to Unicode Gujarati</button>
+<button onclick="convert()">⚡ Convert to Unicode Gujarati</button>
 
 <label>✅ Unicode Gujarati Output (Lohit)</label>
-<textarea id="output" class="output" placeholder="Gujarati Unicode text will appear here..."></textarea>
+<textarea id="output" class="output" placeholder="Clean Unicode Gujarati text will appear here..."></textarea>
 
 <div class="footer">
-⚠️ This tool converts legacy <b>LGM–Arun</b> text into real Unicode Gujarati.
-You can copy the output and paste it directly into MS Word and apply
-<b>Lohit Gujarati</b> font.
+⚠️ Designed for court drafts, affidavits & legal documentation.  
+Converted text is **true Unicode**, safe for MS Word, Google Docs & e-filing portals.  
+Recommended font: <b>Lohit Gujarati</b>.
 </div>
+
 </div>
 
 <script>
-const consonants = {
+// ===== LGM–ARUN → UNICODE CORE LOGIC =====
+const consonants={
   'D':'દ','[':'ગ','P':'પ','G':'જ','J':'ર',';':'ત',
   'L':'લ','V':'વ','H':'હ','T':'ય','S':'સ','M':'મ'
 };
-const matras = {'F':'િ','Z':'ા','X':'ુ','E':'ે','O':'ો'};
-const signs = {'\\':'્',',':'ં','"':'ઃ',' ':' '};
+const matras={
+  'F':'િ','Z':'ા','X':'ુ','E':'ે','O':'ો'
+};
+const signs={
+  '\\':'્',',':'ં','"':'ઃ',' ':' '
+};
 
 function convert(){
-  let text = document.getElementById("input").value;
-  let out = "";
-  let i = 0;
-  while(i < text.length){
-    let ch = text[i];
-    let next = text[i+1];
+  let text=input.value;
+  let out="";
+  let i=0;
+
+  while(i<text.length){
+    let ch=text[i];
+    let next=text[i+1];
+
     if(matras[ch] && consonants[next]){
-      out += consonants[next] + matras[ch];
-      i += 2;
-    } else if(consonants[ch]){
-      out += consonants[ch];
+      out+=consonants[next]+matras[ch];
+      i+=2;
+    }else if(consonants[ch]){
+      out+=consonants[ch];
       i++;
-    } else if(signs[ch]){
-      out += signs[ch];
+    }else if(signs[ch]){
+      out+=signs[ch];
       i++;
-    } else {
-      out += ch;
+    }else{
+      out+=ch;
       i++;
     }
   }
-  document.getElementById("output").value = out;
+  output.value=out;
 }
 </script>
+
 </body>
 </html>
